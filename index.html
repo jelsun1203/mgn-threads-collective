@@ -70,11 +70,10 @@ h1 .red{color:var(--red)}
 .btn-ghost:hover{background:var(--ink);color:var(--paper)}
 .hero-stamp{position:absolute;bottom:1.2rem;right:1.4rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:#8a877f;text-transform:uppercase}
 .hero-visual{background:var(--coal);position:relative;display:flex;align-items:center;justify-content:center;border-left:2px solid var(--ink);overflow:hidden;padding:2rem}
-.hero-visual img.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;filter:grayscale(1) contrast(1.1)}
-.logo-tag{position:relative;background:#101010;border:1px solid #333;padding:1.4rem;max-width:380px;box-shadow:12px 12px 0 rgba(224,58,47,.85)}
-.logo-tag img{width:100%}
-.logo-tag .tag-meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;color:#9a978f;text-transform:uppercase;margin-top:1rem;border-top:1px solid #333;padding-top:.8rem}
-.tag-hole{position:absolute;top:.65rem;left:50%;transform:translateX(-50%);width:14px;height:14px;border:2px solid #444;border-radius:50%;background:var(--coal)}
+.hero-visual img.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;filter:grayscale(1) contrast(1.1)}
+.blogo{height:clamp(48px,6vw,72px);width:auto;max-width:320px;mix-blend-mode:multiply;display:block}
+.chip-logo{height:22px;width:auto;max-width:110px;mix-blend-mode:multiply;display:block}
+.chip{display:inline-flex;align-items:center;gap:.4rem}
 
 /* ---------- section scaffolding ---------- */
 section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
@@ -87,7 +86,7 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
 .labels{background:var(--paper);border-bottom:2px solid var(--ink);padding-top:clamp(3rem,7vw,5.5rem)}
 .index-wrap{display:grid;grid-template-columns:1fr 340px;gap:2.5rem;align-items:start}
 .index{border-top:2px solid var(--ink)}
-.index-row{display:grid;grid-template-columns:3.2rem 1fr auto;align-items:center;gap:1rem;border-bottom:1px solid var(--line);padding:.7rem 0;width:100%;background:none;border-left:none;border-right:none;border-top:none;text-align:left;transition:background .15s,padding-left .15s}
+.index-row{display:grid;grid-template-columns:3.2rem 1fr auto;align-items:center;gap:1rem;border-bottom:1px solid var(--line);padding:.7rem 0;min-height:6rem;width:100%;background:none;border-left:none;border-right:none;border-top:none;text-align:left;transition:background .15s,padding-left .15s}
 .index-row:hover,.index-row:focus-visible{background:#fff;padding-left:.7rem}
 .index-row .code{font-family:var(--mono);font-size:.68rem;color:#8a877f;letter-spacing:.1em}
 .index-row .bname{font-family:var(--disp);font-size:clamp(1.35rem,3.4vw,2.5rem);text-transform:uppercase;line-height:1.05;transition:color .15s}
@@ -103,7 +102,7 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
 .filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.2rem}
 .chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem .9rem;border:1.5px solid var(--ink);background:transparent;transition:all .15s}
 .chip:hover{background:#fff}
-.chip.on{background:var(--ink);color:var(--paper)}
+.chip.on{background:#fff;color:var(--ink);border-color:var(--red);box-shadow:3px 3px 0 var(--red)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem}
 .card{background:#fff;border:1.5px solid var(--ink);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;position:relative}
 .card:hover{transform:translateY(-4px);box-shadow:7px 7px 0 var(--ink)}
@@ -155,7 +154,11 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
 /* ---------- footer ---------- */
 footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2rem}
 .foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
-.foot-grid img{max-width:220px;border:1px solid #333}
+.mark-foot{align-items:flex-start}
+.mark-foot svg{width:72px;height:72px}
+.mark-foot b{font-family:var(--disp);font-size:3rem;line-height:1;letter-spacing:.02em;color:var(--paper);display:block}
+.mark-foot small{font-family:var(--mono);font-size:.85rem;letter-spacing:.3em;color:#8a877f;display:block;margin-top:.35rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .foot-grid h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);margin-bottom:1rem}
 .foot-grid ul{list-style:none}
 .foot-grid li{margin-bottom:.55rem;font-size:.85rem}
@@ -250,11 +253,6 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
   </div>
   <div class="hero-visual">
     <img class="hero-photo" src="assets/img/tee-1.jpg" alt="" aria-hidden="true">
-    <div class="logo-tag">
-      <span class="tag-hole" aria-hidden="true"></span>
-      <img src="assets/mgn-logo.png" alt="MGN Threads Collective logo">
-      <div class="tag-meta"><span>Authentic goods</span><span>Tag № 001</span></div>
-    </div>
   </div>
 </section>
 
@@ -267,8 +265,8 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
   <div class="index-wrap">
     <div class="index" id="brandIndex" role="list"></div>
     <div class="index-preview" id="indexPreview" aria-hidden="true">
-      <img id="previewImg" src="assets/img/graphic-1.jpg" alt="">
-      <div class="cap"><b id="previewName">Stüssy</b><span id="previewMeta">Laguna Beach — 1980</span></div>
+      <img id="previewImg" src="assets/img/wm-carhartt-worn.jpg" alt="">
+      <div class="cap"><b id="previewName">Carhartt</b><span id="previewMeta">Detroit, USA — 1889</span></div>
     </div>
   </div>
 </section>
@@ -318,7 +316,10 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
 <footer>
   <div class="foot-grid">
     <div>
-      <img src="assets/mgn-logo.png" alt="MGN Threads Collective logo">
+      <a class="mark mark-foot" href="#top" aria-label="MGN Threads Collective — back to top">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 25 16 5l13 20h-6.4L16 15l-6.6 10z" fill="#E03A2F"/></svg>
+        <span><b>MGN</b><small>THREADS COLLECTIVE</small></span>
+      </a>
     </div>
     <div>
       <h4>Shop</h4>
@@ -337,7 +338,8 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
   <p class="legal">
     © <span id="year"></span> MGN Threads Collective. Demo storefront — checkout is not live.<br>
     Carhartt, Essentials (Fear of God), The North Face, Stüssy, A Bathing Ape, Human Made, H&amp;M, Cotton On and Uniqlo are trademarks of their respective owners; MGN Threads Collective is an independent retailer and is not affiliated with or endorsed by these brands.<br>
-    Photography via Pexels — Joshua Roberts, Jansel Ferma, Ralph Rabago, Lucas Toyes, Madvortex, Marlon Alves, Wayne Fotografias, LEONARDO DOURADO, Ultra, Matheus Bertelli, Boko Shots, Daniel Adesina, Amir Abbaspoor, Mustapha Damilola, Wolrider Yurtseven, Duygu Kamar, F1 Digitals, Juan C. Palacios, Displaced by Design Clothing.
+    Photography via Pexels — Joshua Roberts, Jansel Ferma, Ralph Rabago, Lucas Toyes, Madvortex, Marlon Alves, Wayne Fotografias, LEONARDO DOURADO, Ultra, Matheus Bertelli, Boko Shots, Daniel Adesina, Amir Abbaspoor, Mustapha Damilola, Wolrider Yurtseven, Duygu Kamar, F1 Digitals, Juan C. Palacios, Displaced by Design Clothing.<br>
+    Brand photography via Wikimedia Commons: Eli Duke (CC BY-SA 2.0), Olgierd Rudak (CC0), Adenosine Triphosphatase, Nkon21, AmyRuiz56, Alex Neman (CC BY-SA 4.0). Brand logos shown for identification only.
   </p>
 </footer>
 
@@ -357,35 +359,35 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
 
 <script>
 const BRANDS=[
-  {id:"carhartt",name:"Carhartt",origin:"Detroit, USA",year:"1889",img:"assets/img/hood-1.jpg"},
-  {id:"essentials",name:"Essentials",origin:"Los Angeles, USA",year:"2018",img:"assets/img/hood-2.jpg"},
-  {id:"tnf",name:"The North Face",origin:"San Francisco, USA",year:"1966",img:"assets/img/hood-3.jpg"},
-  {id:"stussy",name:"Stüssy",origin:"Laguna Beach, USA",year:"1980",img:"assets/img/graphic-1.jpg"},
-  {id:"bape",name:"A Bathing Ape",origin:"Tokyo, Japan",year:"1993",img:"assets/img/graphic-2.jpg"},
-  {id:"humanmade",name:"Human Made",origin:"Tokyo, Japan",year:"2010",img:"assets/img/graphic-4.jpg"},
-  {id:"hm",name:"H&M",origin:"Västerås, Sweden",year:"1947",img:"assets/img/shirt-1.jpg"},
-  {id:"cottonon",name:"Cotton On",origin:"Geelong, Australia",year:"1991",img:"assets/img/shirt-2.jpg"},
-  {id:"uniqlo",name:"Uniqlo",origin:"Yamaguchi, Japan",year:"1984",img:"assets/img/shirt-3.jpg"},
+  {id:"carhartt",name:"Carhartt",origin:"Detroit, USA",year:"1889",img:"assets/img/wm-carhartt-worn.jpg",logo:"assets/logos/carhartt.svg"},
+  {id:"essentials",name:"Essentials",origin:"Los Angeles, USA",year:"2018",img:"assets/img/px-14888315.jpg",logo:null},
+  {id:"tnf",name:"The North Face",origin:"San Francisco, USA",year:"1966",img:"assets/img/wm-tnf-jacket.jpg",logo:"assets/logos/tnf.svg"},
+  {id:"stussy",name:"Stüssy",origin:"Laguna Beach, USA",year:"1980",img:"assets/img/wm-stussy-store.jpg",logo:"assets/logos/stussy.svg"},
+  {id:"bape",name:"A Bathing Ape",origin:"Tokyo, Japan",year:"1993",img:"assets/img/px-11056192.jpg",logo:null},
+  {id:"humanmade",name:"Human Made",origin:"Tokyo, Japan",year:"2010",img:"assets/img/graphic-4.jpg",logo:null},
+  {id:"hm",name:"H&M",origin:"Västerås, Sweden",year:"1947",img:"assets/img/px-13932579.jpg",logo:"assets/logos/hm.svg"},
+  {id:"cottonon",name:"Cotton On",origin:"Geelong, Australia",year:"1991",img:"assets/img/shirt-2.jpg",logo:null},
+  {id:"uniqlo",name:"Uniqlo",origin:"Yamaguchi, Japan",year:"1984",img:"assets/img/wm-uniqlo-tee.jpg",logo:"assets/logos/uniqlo.svg"},
 ];
 const PRODUCTS=[
-  {id:1,brand:"carhartt",name:"Heavyweight Pocket Tee — Carbon",price:2450,img:"assets/img/hood-1.jpg"},
-  {id:2,brand:"carhartt",name:"Workwear Logo Tee — Duck Brown",price:2250,img:"assets/img/shirt-4.jpg"},
-  {id:3,brand:"essentials",name:"Core Logo Tee — Bone",price:4500,img:"assets/img/hood-2.jpg"},
-  {id:4,brand:"essentials",name:"Boxy Fit Tee — Iron",price:4800,img:"assets/img/tee-5.jpg"},
-  {id:5,brand:"tnf",name:"Half Dome Tee — Black",price:1950,img:"assets/img/hood-3.jpg"},
-  {id:6,brand:"tnf",name:"Box Logo Tee — Summit White",price:2100,img:"assets/img/hood-6.jpg"},
-  {id:7,brand:"stussy",name:"Stock Logo Tee — White",price:3200,img:"assets/img/graphic-1.jpg"},
+  {id:1,brand:"carhartt",name:"Duck Hooded Work Jacket — Carhartt Brown",price:7450,img:"assets/img/wm-carhartt-worn.jpg"},
+  {id:2,brand:"carhartt",name:"Rugged Flex Pocket Tee — Duck",price:2250,img:"assets/img/wm-carhartt-tab.jpg"},
+  {id:3,brand:"essentials",name:"Fear of God Raglan Hoodie — Bone",price:8900,img:"assets/img/px-14888315.jpg"},
+  {id:4,brand:"essentials",name:"Back Logo Hoodie — Cement",price:8500,img:"assets/img/px-14999470.jpg"},
+  {id:5,brand:"tnf",name:"Dryzzle FutureLight Jacket — Black",price:9950,img:"assets/img/wm-tnf-jacket.jpg"},
+  {id:6,brand:"tnf",name:"Base Camp Duffel — Summit Gold",price:6800,img:"assets/img/px-30044238.jpg"},
+  {id:7,brand:"stussy",name:"Stüssy × Converse Chuck 70 Hi — Denim",price:6500,img:"assets/img/wm-stussy-product.jpg"},
   {id:8,brand:"stussy",name:"8-Ball Graphic Tee — Black",price:3500,img:"assets/img/tee-2.jpg"},
-  {id:9,brand:"bape",name:"Ape Head Tee — Black",price:6800,img:"assets/img/graphic-2.jpg"},
-  {id:10,brand:"bape",name:"College Logo Tee — Grey",price:6500,img:"assets/img/hood-4.jpg"},
+  {id:9,brand:"bape",name:"WGM Shark Full-Zip Hoodie — Black Camo",price:18500,img:"assets/img/px-5880084.jpg"},
+  {id:10,brand:"bape",name:"Tiger Camo Hoodie — Green",price:16800,img:"assets/img/px-11056192.jpg"},
   {id:11,brand:"humanmade",name:"Heart Logo Tee — White",price:5900,img:"assets/img/graphic-4.jpg"},
-  {id:12,brand:"humanmade",name:"Dry Alls Graphic Tee — Navy",price:5700,img:"assets/img/shirt-5.jpg"},
-  {id:13,brand:"hm",name:"Relaxed Fit Cotton Tee — White",price:899,img:"assets/img/shirt-1.jpg"},
-  {id:14,brand:"hm",name:"Oversized Tee — Washed Black",price:999,img:"assets/img/tee-1.jpg"},
+  {id:12,brand:"humanmade",name:"Dry Alls Graphic Tee — Sand",price:5700,img:"assets/img/tee-5.jpg"},
+  {id:13,brand:"hm",name:"Relaxed Fit Longsleeve — Ecru",price:899,img:"assets/img/px-13932579.jpg"},
+  {id:14,brand:"hm",name:"Oversized Tee — Washed Black",price:999,img:"assets/img/px-7625522.jpg"},
   {id:15,brand:"cottonon",name:"Loose Fit Tee — Vintage Wash",price:999,img:"assets/img/shirt-2.jpg"},
-  {id:16,brand:"cottonon",name:"Graphic Print Tee — Stone",price:1150,img:"assets/img/graphic-5.jpg"},
-  {id:17,brand:"uniqlo",name:"Airism Cotton Crew Tee — White",price:790,img:"assets/img/shirt-3.jpg"},
-  {id:18,brand:"uniqlo",name:"U Crew Neck Tee — Olive",price:990,img:"assets/img/tee-6.jpg"},
+  {id:16,brand:"cottonon",name:"Everyday Crew Tee — White",price:1150,img:"assets/img/shirt-4.jpg"},
+  {id:17,brand:"uniqlo",name:"UT Graphic Crew Tee — White",price:790,img:"assets/img/wm-uniqlo-tee.jpg"},
+  {id:18,brand:"uniqlo",name:"Uniqlo U Capsule — Assorted Basics",price:990,img:"assets/img/px-6772785.jpg"},
 ];
 const LOOKS=[
   {img:"assets/img/graphic-3.jpg",cap:"Look 01 — Street"},
@@ -393,7 +395,7 @@ const LOOKS=[
   {img:"assets/img/shirt-6.jpg",cap:"Look 03 — Everyday"},
   {img:"assets/img/graphic-6.jpg",cap:"Look 04 — Graphic"},
   {img:"assets/img/tee-2.jpg",cap:"Look 05 — Classic"},
-  {img:"assets/img/hood-4.jpg",cap:"Look 06 — Night"},
+  {img:"assets/img/px-5880081.jpg",cap:"Look 06 — Night"},
 ];
 const peso=n=>"₱"+n.toLocaleString("en-PH");
 const bname=id=>BRANDS.find(b=>b.id===id)?.name||id;
@@ -411,7 +413,8 @@ const bname=id=>BRANDS.find(b=>b.id===id)?.name||id;
     const count=PRODUCTS.filter(p=>p.brand===b.id).length;
     const row=document.createElement("button");
     row.className="index-row";row.setAttribute("role","listitem");
-    row.innerHTML=`<span class="code">${String(i+1).padStart(2,"0")}/09</span><span class="bname">${b.name}</span><span class="bmeta">${b.origin} — Est. ${b.year}<br>${count} styles in stock</span>`;
+    const nameHTML=b.logo?`<img class="blogo" src="${b.logo}" alt="${b.name} logo">`:`<span class="bname">${b.name}</span>`;
+    row.innerHTML=`<span class="code">${String(i+1).padStart(2,"0")}/09</span>${nameHTML}<span class="bmeta">${b.origin} — Est. ${b.year}<br>${count} styles in stock</span>`;
     row.addEventListener("mouseenter",()=>preview(b));
     row.addEventListener("focus",()=>preview(b));
     row.addEventListener("click",()=>{setFilter(b.id);document.getElementById("shop").scrollIntoView({behavior:"smooth"});});
@@ -438,7 +441,10 @@ function setFilter(f){
 (function(){
   const fl=document.getElementById("filters");
   const chips=[{id:"all",name:"All labels"}].concat(BRANDS);
-  fl.innerHTML=chips.map(c=>`<button class="chip${c.id==="all"?" on":""}" data-f="${c.id}">${c.name}</button>`).join("");
+  fl.innerHTML=chips.map(c=>{
+    const inner=c.logo?`<img class="chip-logo" src="${c.logo}" alt="">${""}<span class="sr-only">${c.name}</span>`:c.name;
+    return `<button class="chip${c.id==="all"?" on":""}" data-f="${c.id}" aria-label="${c.name}">${inner}</button>`;
+  }).join("");
   fl.addEventListener("click",e=>{const b=e.target.closest(".chip");if(b)setFilter(b.dataset.f);});
 })();
 function renderGrid(){
