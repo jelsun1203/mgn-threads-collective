@@ -72,7 +72,7 @@ h1 .red{color:var(--red)}
 .hero-visual{background:var(--coal);position:relative;display:flex;align-items:center;justify-content:center;border-left:2px solid var(--ink);overflow:hidden;padding:2rem}
 .hero-visual img.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;filter:grayscale(1) contrast(1.1)}
 .blogo{height:clamp(48px,6vw,72px);width:auto;max-width:320px;mix-blend-mode:multiply;display:block}
-.chip-logo{height:22px;width:auto;max-width:110px;mix-blend-mode:multiply;display:block}
+.chip-logo{height:28px;width:auto;max-width:140px;mix-blend-mode:multiply;display:block}
 .chip{display:inline-flex;align-items:center;gap:.4rem}
 
 /* ---------- section scaffolding ---------- */
@@ -94,19 +94,26 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
 .index-row .bmeta{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:#6c6961;text-transform:uppercase;text-align:right;line-height:1.7}
 .index-preview{position:sticky;top:90px;border:2px solid var(--ink);background:var(--coal);aspect-ratio:3/4;overflow:hidden;box-shadow:10px 10px 0 var(--paper-dim)}
 .index-preview img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4);transition:opacity .25s}
+.preview-tile{position:absolute;inset:0;display:grid;place-items:center;background:var(--paper-dim);background-image:repeating-linear-gradient(45deg,transparent 0 14px,rgba(20,20,20,.04) 14px 15px)}
+.preview-tile .tile-word{font-size:clamp(1.5rem,2.2vw,2.2rem)}
 .index-preview .cap{position:absolute;bottom:0;left:0;right:0;background:rgba(20,20,20,.88);color:var(--paper);font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;padding:.6rem .8rem;display:flex;justify-content:space-between}
 .index-preview .cap b{color:var(--red)}
 
 /* ---------- shop ---------- */
 .shop{background:var(--paper-dim);border-bottom:2px solid var(--ink)}
-.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.2rem}
-.chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem .9rem;border:1.5px solid var(--ink);background:transparent;transition:all .15s}
+.filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.chip{flex:1 1 auto;justify-content:center;font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 1.2rem;border:1.5px solid var(--ink);background:transparent;transition:all .15s}
 .chip:hover{background:#fff}
 .chip.on{background:#fff;color:var(--ink);border-color:var(--red);box-shadow:3px 3px 0 var(--red)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem}
 .card{background:#fff;border:1.5px solid var(--ink);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;position:relative}
 .card:hover{transform:translateY(-4px);box-shadow:7px 7px 0 var(--ink)}
 .card .ph{aspect-ratio:4/5;overflow:hidden;border-bottom:1.5px solid var(--ink);position:relative}
+.card .ph.tile{display:grid;place-items:center;background:var(--paper-dim);background-image:repeating-linear-gradient(45deg,transparent 0 14px,rgba(20,20,20,.03) 14px 15px)}
+.tile-inner{display:grid;place-items:center;gap:.9rem;padding:1rem;text-align:center}
+.tile-inner img{max-width:62%;max-height:120px;mix-blend-mode:multiply}
+.tile-word{font-family:var(--disp);font-size:clamp(1.3rem,2vw,1.8rem);text-transform:uppercase;line-height:1.1}
+.tile-note{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#8a877f}
 .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
 .card:hover .ph img{transform:scale(1.045)}
 .card .brand-tab{position:absolute;top:.7rem;left:0;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;padding:.35rem .7rem .35rem .6rem}
@@ -177,6 +184,7 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
 .drawer-items{flex:1;overflow-y:auto;padding:1rem 1.3rem}
 .d-item{display:grid;grid-template-columns:64px 1fr auto;gap:.9rem;align-items:center;border-bottom:1px solid var(--line);padding:.8rem 0}
 .d-item img{width:64px;height:76px;object-fit:cover;border:1.5px solid var(--ink)}
+.d-tile{width:64px;height:76px;border:1.5px solid var(--ink);display:grid;place-items:center;background:var(--paper-dim);font-family:var(--disp);font-size:1.4rem}
 .d-item .n{font-weight:700;font-size:.85rem}
 .d-item .b{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#8a877f}
 .d-item .p{font-family:var(--mono);font-size:.8rem;margin-top:.2rem}
@@ -252,7 +260,7 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
     <span class="hero-stamp">MGN·TC — EST. COLLECTION 001</span>
   </div>
   <div class="hero-visual">
-    <img class="hero-photo" src="assets/img/tee-1.jpg" alt="" aria-hidden="true">
+    <img class="hero-photo" src="assets/img/px-14999470.jpg" alt="" aria-hidden="true">
   </div>
 </section>
 
@@ -266,6 +274,7 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
     <div class="index" id="brandIndex" role="list"></div>
     <div class="index-preview" id="indexPreview" aria-hidden="true">
       <img id="previewImg" src="assets/img/wm-carhartt-worn.jpg" alt="">
+      <div class="preview-tile" id="previewTile" hidden><span class="tile-word"></span></div>
       <div class="cap"><b id="previewName">Carhartt</b><span id="previewMeta">Detroit, USA — 1889</span></div>
     </div>
   </div>
@@ -364,9 +373,9 @@ const BRANDS=[
   {id:"tnf",name:"The North Face",origin:"San Francisco, USA",year:"1966",img:"assets/img/wm-tnf-jacket.jpg",logo:"assets/logos/tnf.svg"},
   {id:"stussy",name:"Stüssy",origin:"Laguna Beach, USA",year:"1980",img:"assets/img/wm-stussy-store.jpg",logo:"assets/logos/stussy.svg"},
   {id:"bape",name:"A Bathing Ape",origin:"Tokyo, Japan",year:"1993",img:"assets/img/px-11056192.jpg",logo:null},
-  {id:"humanmade",name:"Human Made",origin:"Tokyo, Japan",year:"2010",img:"assets/img/graphic-4.jpg",logo:null},
+  {id:"humanmade",name:"Human Made",origin:"Tokyo, Japan",year:"2010",img:null,logo:null},
   {id:"hm",name:"H&M",origin:"Västerås, Sweden",year:"1947",img:"assets/img/px-13932579.jpg",logo:"assets/logos/hm.svg"},
-  {id:"cottonon",name:"Cotton On",origin:"Geelong, Australia",year:"1991",img:"assets/img/shirt-2.jpg",logo:null},
+  {id:"cottonon",name:"Cotton On",origin:"Geelong, Australia",year:"1991",img:null,logo:null},
   {id:"uniqlo",name:"Uniqlo",origin:"Yamaguchi, Japan",year:"1984",img:"assets/img/wm-uniqlo-tee.jpg",logo:"assets/logos/uniqlo.svg"},
 ];
 const PRODUCTS=[
@@ -375,27 +384,27 @@ const PRODUCTS=[
   {id:3,brand:"essentials",name:"Fear of God Raglan Hoodie — Bone",price:8900,img:"assets/img/px-14888315.jpg"},
   {id:4,brand:"essentials",name:"Back Logo Hoodie — Cement",price:8500,img:"assets/img/px-14999470.jpg"},
   {id:5,brand:"tnf",name:"Dryzzle FutureLight Jacket — Black",price:9950,img:"assets/img/wm-tnf-jacket.jpg"},
-  {id:6,brand:"tnf",name:"Base Camp Duffel — Summit Gold",price:6800,img:"assets/img/px-30044238.jpg"},
-  {id:7,brand:"stussy",name:"Stüssy × Converse Chuck 70 Hi — Denim",price:6500,img:"assets/img/wm-stussy-product.jpg"},
-  {id:8,brand:"stussy",name:"8-Ball Graphic Tee — Black",price:3500,img:"assets/img/tee-2.jpg"},
+  {id:6,brand:"tnf",name:"Half Dome Tee — Black",price:2100,img:null},
+  {id:7,brand:"stussy",name:"Stock Logo Tee — White",price:3200,img:null},
+  {id:8,brand:"stussy",name:"8-Ball Graphic Tee — Black",price:3500,img:"assets/img/wm-stussy-store.jpg"},
   {id:9,brand:"bape",name:"WGM Shark Full-Zip Hoodie — Black Camo",price:18500,img:"assets/img/px-5880084.jpg"},
   {id:10,brand:"bape",name:"Tiger Camo Hoodie — Green",price:16800,img:"assets/img/px-11056192.jpg"},
-  {id:11,brand:"humanmade",name:"Heart Logo Tee — White",price:5900,img:"assets/img/graphic-4.jpg"},
-  {id:12,brand:"humanmade",name:"Dry Alls Graphic Tee — Sand",price:5700,img:"assets/img/tee-5.jpg"},
+  {id:11,brand:"humanmade",name:"Heart Logo Tee — White",price:5900,img:null},
+  {id:12,brand:"humanmade",name:"Dry Alls Graphic Tee — Sand",price:5700,img:null},
   {id:13,brand:"hm",name:"Relaxed Fit Longsleeve — Ecru",price:899,img:"assets/img/px-13932579.jpg"},
-  {id:14,brand:"hm",name:"Oversized Tee — Washed Black",price:999,img:"assets/img/px-7625522.jpg"},
-  {id:15,brand:"cottonon",name:"Loose Fit Tee — Vintage Wash",price:999,img:"assets/img/shirt-2.jpg"},
-  {id:16,brand:"cottonon",name:"Everyday Crew Tee — White",price:1150,img:"assets/img/shirt-4.jpg"},
+  {id:14,brand:"hm",name:"Oversized Tee — Washed Black",price:999,img:null},
+  {id:15,brand:"cottonon",name:"Loose Fit Tee — Vintage Wash",price:999,img:null},
+  {id:16,brand:"cottonon",name:"Everyday Crew Tee — White",price:1150,img:null},
   {id:17,brand:"uniqlo",name:"UT Graphic Crew Tee — White",price:790,img:"assets/img/wm-uniqlo-tee.jpg"},
   {id:18,brand:"uniqlo",name:"Uniqlo U Capsule — Assorted Basics",price:990,img:"assets/img/px-6772785.jpg"},
 ];
 const LOOKS=[
-  {img:"assets/img/graphic-3.jpg",cap:"Look 01 — Street"},
-  {img:"assets/img/hood-5.jpg",cap:"Look 02 — Layered"},
-  {img:"assets/img/shirt-6.jpg",cap:"Look 03 — Everyday"},
-  {img:"assets/img/graphic-6.jpg",cap:"Look 04 — Graphic"},
-  {img:"assets/img/tee-2.jpg",cap:"Look 05 — Classic"},
-  {img:"assets/img/px-5880081.jpg",cap:"Look 06 — Night"},
+  {img:"assets/img/wm-carhartt-worn.jpg",cap:"Look 01 — Carhartt"},
+  {img:"assets/img/px-14888315.jpg",cap:"Look 02 — Essentials"},
+  {img:"assets/img/px-11056192.jpg",cap:"Look 03 — A Bathing Ape"},
+  {img:"assets/img/px-13932579.jpg",cap:"Look 04 — H&M"},
+  {img:"assets/img/wm-uniqlo-tee.jpg",cap:"Look 05 — Uniqlo"},
+  {img:"assets/img/px-5880081.jpg",cap:"Look 06 — A Bathing Ape, night"},
 ];
 const peso=n=>"₱"+n.toLocaleString("en-PH");
 const bname=id=>BRANDS.find(b=>b.id===id)?.name||id;
@@ -421,7 +430,9 @@ const bname=id=>BRANDS.find(b=>b.id===id)?.name||id;
     wrap.appendChild(row);
   });
   function preview(b){
-    document.getElementById("previewImg").src=b.img;
+    const im=document.getElementById("previewImg"),tile=document.getElementById("previewTile");
+    if(b.img){im.src=b.img;im.style.display="";tile.hidden=true;}
+    else{im.style.display="none";tile.hidden=false;tile.querySelector(".tile-word").textContent=b.name;}
     document.getElementById("previewName").textContent=b.name;
     document.getElementById("previewMeta").textContent=`${b.origin} — ${b.year}`;
   }
@@ -450,15 +461,20 @@ function setFilter(f){
 function renderGrid(){
   const grid=document.getElementById("productGrid");
   const items=PRODUCTS.filter(p=>activeFilter==="all"||p.brand===activeFilter);
-  grid.innerHTML=items.map(p=>`
+  grid.innerHTML=items.map(p=>{
+    const b=BRANDS.find(x=>x.id===p.brand);
+    const visual=p.img
+      ?`<img src="${p.img}" alt="${bname(p.brand)} — ${p.name}" loading="lazy">`
+      :`<div class="tile-inner">${b.logo?`<img src="${b.logo}" alt="${b.name} logo">`:`<span class="tile-word">${b.name}</span>`}<span class="tile-note">Product photo coming soon</span></div>`;
+    return `
     <article class="card">
-      <div class="ph"><span class="brand-tab">${bname(p.brand)}</span><img src="${p.img}" alt="${bname(p.brand)} — ${p.name}" loading="lazy"></div>
+      <div class="ph${p.img?"":" tile"}"><span class="brand-tab">${bname(p.brand)}</span>${visual}</div>
       <div class="card-body">
         <h3>${p.name}</h3>
         <div class="card-row"><span class="price">${peso(p.price)}</span><span class="sizes">S · M · L · XL</span></div>
         <button class="add" data-id="${p.id}">Add to cart</button>
       </div>
-    </article>`).join("");
+    </article>`;}).join("");
 }
 renderGrid();
 document.getElementById("productGrid").addEventListener("click",e=>{
@@ -481,9 +497,11 @@ function renderCart(){
   const box=document.getElementById("drawerItems");
   if(!cart.length){box.innerHTML=`<p class="drawer-empty">The rack is full,<br>your cart is empty.<br><br>Go pick something.</p>`;}
   else{
-    box.innerHTML=cart.map((id,idx)=>{const p=PRODUCTS.find(x=>x.id===id);return `
+    box.innerHTML=cart.map((id,idx)=>{const p=PRODUCTS.find(x=>x.id===id);
+      const thumb=p.img?`<img src="${p.img}" alt="">`:`<span class="d-tile">${bname(p.brand).charAt(0)}</span>`;
+      return `
       <div class="d-item">
-        <img src="${p.img}" alt="">
+        ${thumb}
         <div><div class="b">${bname(p.brand)}</div><div class="n">${p.name}</div><div class="p">${peso(p.price)}</div></div>
         <button class="d-rm" data-idx="${idx}">Remove</button>
       </div>`;}).join("");
