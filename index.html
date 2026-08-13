@@ -134,8 +134,11 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
 /* ---------- lookbook ---------- */
 .look{border-bottom:2px solid var(--ink);padding-right:0;padding-left:0}
 .look .sec-head{padding:0 clamp(1rem,4vw,2.5rem)}
-.look-strip{display:flex;gap:1rem;overflow-x:auto;padding:0 clamp(1rem,4vw,2.5rem) 1.2rem;scroll-snap-type:x mandatory}
-.look-strip figure{flex:0 0 clamp(230px,26vw,330px);scroll-snap-align:start;position:relative}
+.look-strip{overflow:hidden;padding:0 0 1.2rem}
+.look-track{display:flex;width:max-content;animation:lookScroll 45s linear infinite}
+.look-track:hover{animation-play-state:paused}
+@keyframes lookScroll{to{transform:translateX(-50%)}}
+.look-strip figure{flex:0 0 clamp(230px,26vw,330px);margin-right:1rem;position:relative}
 .look-strip img{aspect-ratio:3/4;object-fit:cover;width:100%;border:2px solid var(--ink);filter:grayscale(.5);transition:filter .25s}
 .look-strip figure:hover img{filter:grayscale(0)}
 .look-strip figcaption{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;margin-top:.5rem;color:#6c6961}
@@ -153,6 +156,12 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
 .about .facts b{font-family:var(--disp);font-size:1.5rem;display:block}
 .about .facts span{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#8a877f}
 .signup{display:flex;flex-direction:column;justify-content:center}
+.about-collage{display:flex;margin-bottom:2.4rem;padding-left:1.2rem}
+.about-collage img{width:38%;aspect-ratio:3/4;object-fit:cover;border:2px solid #3a3a38;filter:grayscale(.55);transition:filter .25s,transform .25s;box-shadow:8px 8px 0 rgba(224,58,47,.5)}
+.about-collage img:nth-child(1){transform:rotate(-4deg)}
+.about-collage img:nth-child(2){transform:rotate(2.5deg) translateY(-12px);margin-left:-9%;z-index:1}
+.about-collage img:nth-child(3){transform:rotate(-1.5deg) translateY(8px);margin-left:-9%}
+.about-collage img:hover{filter:grayscale(0);transform:rotate(0) scale(1.04);z-index:2}
 .signup label{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.9rem}
 .signup-row{display:flex;border:2px solid var(--paper)}
 .signup input{flex:1;background:transparent;border:none;color:var(--paper);font-family:var(--mono);font-size:.85rem;padding:.95rem 1rem;min-width:0}
@@ -224,6 +233,7 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
+  .look-strip{overflow-x:auto}
 }
 </style>
 </head>
@@ -319,6 +329,11 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
     </div>
   </div>
   <div class="signup">
+    <div class="about-collage" aria-hidden="true">
+      <img src="assets/img/px-5880084.jpg" alt="">
+      <img src="assets/img/px-14888315.jpg" alt="">
+      <img src="assets/img/px-11056192.jpg" alt="">
+    </div>
     <label for="dropEmail">Drop alerts</label>
     <form class="signup-row" id="dropForm">
       <input type="email" id="dropEmail" placeholder="your@email.com" required aria-label="Email for drop alerts">
@@ -377,33 +392,33 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
 const BRANDS=[
   {id:"carhartt",name:"Carhartt",origin:"Detroit, USA",year:"1889",img:"assets/img/wm-carhartt-tab.jpg",logo:"assets/logos/carhartt.svg"},
   {id:"essentials",name:"Essentials",origin:"Los Angeles, USA",year:"2018",img:"assets/img/px-14888315.jpg",logo:"assets/logos/essentials.png"},
-  {id:"tnf",name:"The North Face",origin:"San Francisco, USA",year:"1966",img:null,logo:"assets/logos/tnf.svg"},
+  {id:"tnf",name:"The North Face",origin:"San Francisco, USA",year:"1966",img:"assets/tees/tnf.svg",logo:"assets/logos/tnf.svg"},
   {id:"stussy",name:"Stüssy",origin:"Laguna Beach, USA",year:"1980",img:"assets/img/wm-stussy-store.jpg",logo:"assets/logos/stussy.svg"},
   {id:"bape",name:"A Bathing Ape",origin:"Tokyo, Japan",year:"1993",img:"assets/img/px-11056192.jpg",logo:"assets/logos/bape.png"},
-  {id:"humanmade",name:"Human Made",origin:"Tokyo, Japan",year:"2010",img:null,logo:"assets/logos/humanmade.png"},
+  {id:"humanmade",name:"Human Made",origin:"Tokyo, Japan",year:"2010",img:"assets/tees/humanmade.svg",logo:"assets/logos/humanmade.png"},
   {id:"hm",name:"H&M",origin:"Västerås, Sweden",year:"1947",img:"assets/img/px-13932579.jpg",logo:"assets/logos/hm.svg"},
-  {id:"cottonon",name:"Cotton On",origin:"Geelong, Australia",year:"1991",img:null,logo:"assets/logos/cottonon.png"},
-  {id:"uniqlo",name:"Uniqlo",origin:"Yamaguchi, Japan",year:"1984",img:null,logo:"assets/logos/uniqlo.svg"},
+  {id:"cottonon",name:"Cotton On",origin:"Geelong, Australia",year:"1991",img:"assets/tees/cottonon.svg",logo:"assets/logos/cottonon.png"},
+  {id:"uniqlo",name:"Uniqlo",origin:"Yamaguchi, Japan",year:"1984",img:"assets/tees/uniqlo.svg",logo:"assets/logos/uniqlo.svg"},
 ];
 const PRODUCTS=[
-  {id:1,brand:"carhartt",name:"Heavyweight Pocket Tee — Carbon",price:2450,img:null},
+  {id:1,brand:"carhartt",name:"Heavyweight Pocket Tee — Natural",price:2450,img:"assets/tees/carhartt.svg"},
   {id:2,brand:"carhartt",name:"Rugged Flex Pocket Tee — Duck",price:2250,img:"assets/img/wm-carhartt-tab.jpg"},
   {id:3,brand:"essentials",name:"Fear of God Raglan Hoodie — Bone",price:8900,img:"assets/img/px-14888315.jpg"},
   {id:4,brand:"essentials",name:"Back Logo Tee — Cement",price:8500,img:"assets/img/px-14999470-crop.jpg"},
-  {id:5,brand:"tnf",name:"Simple Dome Tee — White",price:1950,img:null},
-  {id:6,brand:"tnf",name:"Half Dome Tee — Black",price:2100,img:null},
-  {id:7,brand:"stussy",name:"Stock Logo Tee — White",price:3200,img:null},
-  {id:8,brand:"stussy",name:"8-Ball Graphic Tee — Black",price:3500,img:null},
+  {id:5,brand:"tnf",name:"Simple Dome Tee — White",price:1950,img:"assets/tees/tnf.svg"},
+  {id:6,brand:"tnf",name:"Half Dome Tee — Bone",price:2100,img:"assets/tees/tnf.svg"},
+  {id:7,brand:"stussy",name:"Stock Logo Tee — White",price:3200,img:"assets/tees/stussy.svg"},
+  {id:8,brand:"stussy",name:"8-Ball Graphic Tee — Bone",price:3500,img:"assets/tees/stussy.svg"},
   {id:9,brand:"bape",name:"WGM Shark Tee — Black Camo",price:18500,img:"assets/img/px-5880081.jpg"},
   {id:10,brand:"bape",name:"Tiger Camo Tee — Green",price:16800,img:"assets/img/px-11056192-crop.jpg"},
-  {id:11,brand:"humanmade",name:"Heart Logo Tee — White",price:5900,img:null},
-  {id:12,brand:"humanmade",name:"Dry Alls Graphic Tee — Sand",price:5700,img:null},
-  {id:13,brand:"hm",name:"Regular Fit Crew Tee — Ecru",price:899,img:null},
-  {id:14,brand:"hm",name:"Oversized Tee — Washed Black",price:999,img:null},
-  {id:15,brand:"cottonon",name:"Loose Fit Tee — Vintage Wash",price:999,img:null},
-  {id:16,brand:"cottonon",name:"Everyday Crew Tee — White",price:1150,img:null},
-  {id:17,brand:"uniqlo",name:"UT Graphic Crew Tee — White",price:790,img:null},
-  {id:18,brand:"uniqlo",name:"U Crew Neck Tee — Olive",price:990,img:null},
+  {id:11,brand:"humanmade",name:"Heart Logo Tee — White",price:5900,img:"assets/tees/humanmade.svg"},
+  {id:12,brand:"humanmade",name:"Dry Alls Graphic Tee — Sand",price:5700,img:"assets/tees/humanmade.svg"},
+  {id:13,brand:"hm",name:"Regular Fit Crew Tee — Ecru",price:899,img:"assets/tees/hm.svg"},
+  {id:14,brand:"hm",name:"Oversized Tee — Stone",price:999,img:"assets/tees/hm.svg"},
+  {id:15,brand:"cottonon",name:"Loose Fit Tee — Vintage Wash",price:999,img:"assets/tees/cottonon.svg"},
+  {id:16,brand:"cottonon",name:"Everyday Crew Tee — White",price:1150,img:"assets/tees/cottonon.svg"},
+  {id:17,brand:"uniqlo",name:"UT Graphic Crew Tee — White",price:790,img:"assets/tees/uniqlo.svg"},
+  {id:18,brand:"uniqlo",name:"U Crew Neck Tee — Olive",price:990,img:"assets/tees/uniqlo.svg"},
 ];
 const LOOKS=[
   {img:"assets/img/px-14888315.jpg",cap:"Look 01 — Essentials"},
@@ -411,6 +426,9 @@ const LOOKS=[
   {img:"assets/img/px-13932579.jpg",cap:"Look 03 — H&M"},
   {img:"assets/img/px-14999470.jpg",cap:"Look 04 — Essentials, LA"},
   {img:"assets/img/px-5880084.jpg",cap:"Look 05 — A Bathing Ape, night"},
+  {img:"assets/img/px-14999470-crop.jpg",cap:"Look 06 — Essentials, back"},
+  {img:"assets/img/px-5880081.jpg",cap:"Look 07 — A Bathing Ape, street"},
+  {img:"assets/img/px-11056192-crop.jpg",cap:"Look 08 — A Bathing Ape, detail"},
 ];
 const peso=n=>"₱"+n.toLocaleString("en-PH");
 const bname=id=>BRANDS.find(b=>b.id===id)?.name||id;
@@ -516,8 +534,11 @@ document.getElementById("productGrid").addEventListener("click",e=>{
   setTimeout(()=>{btn.textContent="Add to cart";btn.classList.remove("added");},1400);
 });
 
-/* lookbook */
-document.getElementById("lookStrip").innerHTML=LOOKS.map(l=>`<figure><img src="${l.img}" alt="${l.cap}" loading="lazy"><figcaption>${l.cap}</figcaption></figure>`).join("");
+/* lookbook — endless sideways train */
+(function(){
+  const figs=LOOKS.map(l=>`<figure><img src="${l.img}" alt="${l.cap}"><figcaption>${l.cap}</figcaption></figure>`).join("");
+  document.getElementById("lookStrip").innerHTML=`<div class="look-track">${figs}<span aria-hidden="true" style="display:contents">${figs}</span></div>`;
+})();
 
 /* cart */
 let cart=[];
