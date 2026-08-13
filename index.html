@@ -149,9 +149,12 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
 /* ---------- about / signup ---------- */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:3rem;border-bottom:2px solid var(--ink);background:var(--coal);color:var(--paper);position:relative;overflow:hidden}
 .about>div:not(.brand-wall){position:relative;z-index:1}
-.about>.brand-wall{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
-.brand-wall img{position:absolute;opacity:.07;filter:grayscale(1) invert(1);width:auto}
-.brand-wall .wall-tri{position:absolute;left:-4%;bottom:-14%;width:34%;opacity:.06;transform:rotate(-8deg)}
+.brand-wall{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.brand-wall img{position:absolute;opacity:.07;filter:grayscale(1) invert(1);width:auto;animation:floaty var(--d,7s) ease-in-out var(--dl,0s) infinite alternate}
+.brand-wall .wall-tri{position:absolute;left:-4%;bottom:-14%;width:34%;opacity:.06;transform:rotate(-8deg);animation:floaty 9s ease-in-out infinite alternate}
+@keyframes floaty{from{transform:translateY(-16px) rotate(var(--r,0deg))}to{transform:translateY(16px) rotate(var(--r,0deg))}}
+footer{position:relative;overflow:hidden}
+footer .foot-grid,footer .legal{position:relative;z-index:1}
 .about h2{font-family:var(--disp);font-size:clamp(1.7rem,3.4vw,2.6rem);text-transform:uppercase;line-height:1.05;margin-bottom:1.2rem}
 .about h2 span{color:var(--red)}
 .about p{color:#b9b6ae;max-width:52ch;margin-bottom:1rem}
@@ -352,6 +355,7 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
 
 <!-- footer -->
 <footer>
+  <div class="brand-wall" id="footWall" aria-hidden="true"></div>
   <div class="foot-grid">
     <div>
       <a class="mark mark-foot" href="#top" aria-label="MGN Threads Collective — back to top">
@@ -501,21 +505,28 @@ const bname=id=>BRANDS.find(b=>b.id===id)?.name||id;
   }
 })();
 
-/* brand wall watermark (About section) */
+/* brand wall watermarks (About + footer) — large floating logos */
 (function(){
-  const wall=document.getElementById("brandWall");
-  const spots=[
-    {l:"3%",t:"6%",h:64,r:-12},{l:"17%",t:"66%",h:96,r:8},{l:"33%",t:"82%",h:58,r:-6},
-    {l:"45%",t:"8%",h:52,r:14},{l:"58%",t:"72%",h:76,r:-10},{l:"73%",t:"5%",h:60,r:6},
-    {l:"88%",t:"58%",h:88,r:-14},{l:"36%",t:"38%",h:48,r:3},{l:"64%",t:"34%",h:50,r:-4},
-  ];
-  BRANDS.forEach((b,i)=>{
-    if(!b.logo||!spots[i])return;
-    const s=spots[i],im=document.createElement("img");
-    im.src=b.logo;im.alt="";
-    im.style.cssText=`left:${s.l};top:${s.t};height:${s.h}px;transform:rotate(${s.r}deg)`;
-    wall.appendChild(im);
-  });
+  function buildWall(el,spots){
+    if(!el)return;
+    BRANDS.forEach((b,i)=>{
+      if(!b.logo||!spots[i])return;
+      const s=spots[i],im=document.createElement("img");
+      im.src=b.logo;im.alt="";
+      im.style.cssText=`left:${s.l};top:${s.t};height:${s.h}px;--r:${s.r}deg;--d:${s.d}s;--dl:${(i%4)*-1.7}s;transform:rotate(${s.r}deg)`;
+      el.appendChild(im);
+    });
+  }
+  buildWall(document.getElementById("brandWall"),[
+    {l:"2%",t:"4%",h:110,r:-12,d:6.5},{l:"15%",t:"62%",h:170,r:8,d:8},{l:"32%",t:"80%",h:105,r:-6,d:7},
+    {l:"44%",t:"6%",h:95,r:14,d:9},{l:"57%",t:"68%",h:140,r:-10,d:6},{l:"72%",t:"4%",h:110,r:6,d:8.5},
+    {l:"86%",t:"55%",h:160,r:-14,d:7.5},{l:"34%",t:"36%",h:85,r:3,d:9.5},{l:"63%",t:"32%",h:90,r:-4,d:7},
+  ]);
+  buildWall(document.getElementById("footWall"),[
+    {l:"4%",t:"52%",h:130,r:6,d:7},{l:"16%",t:"8%",h:150,r:-8,d:8.5},{l:"30%",t:"55%",h:120,r:10,d:6.5},
+    {l:"43%",t:"6%",h:100,r:-5,d:9},{l:"55%",t:"48%",h:150,r:7,d:7.5},{l:"68%",t:"4%",h:110,r:-11,d:6},
+    {l:"80%",t:"50%",h:140,r:9,d:8},{l:"90%",t:"6%",h:110,r:-6,d:9.5},{l:"50%",t:"78%",h:95,r:4,d:7},
+  ]);
 })();
 
 /* footer brand list */
