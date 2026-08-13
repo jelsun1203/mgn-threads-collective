@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MGN Threads Collective — Nine Labels. One Rack.</title>
+<meta name="description" content="MGN Threads Collective — a curated multi-brand tee shop carrying Carhartt, Essentials, The North Face, Stüssy, A Bathing Ape, Human Made, H&M, Cotton On and Uniqlo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M4 24 16 6l12 18h-6l-6-9-6 9z' fill='%23E03A2F'/></svg>">
+<style>
+:root{
+  --paper:#F4F3EF;
+  --paper-dim:#ECEAE4;
+  --ink:#141414;
+  --red:#E03A2F;
+  --line:#D8D5CE;
+  --coal:#1A1A1A;
+  --mono:'IBM Plex Mono',monospace;
+  --body:'Archivo',sans-serif;
+  --disp:'Archivo Black',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+::selection{background:var(--red);color:#fff}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--coal);color:var(--paper);overflow:hidden;white-space:nowrap;border-bottom:2px solid var(--ink)}
+.ticker-track{display:inline-flex;animation:tick 36s linear infinite;padding:.55rem 0}
+.ticker span{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:0 1.4rem;display:inline-flex;align-items:center;gap:1.4rem}
+.ticker .tri{color:var(--red);font-size:.6rem}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- nav ---------- */
+header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:2px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem clamp(1rem,4vw,2.5rem)}
+.mark{display:flex;align-items:center;gap:.55rem}
+.mark svg{width:30px;height:30px}
+.mark b{font-family:var(--disp);font-size:1.15rem;letter-spacing:.02em}
+.mark small{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;display:block;margin-top:-2px;color:#666}
+.nav-links{display:flex;gap:clamp(1rem,3vw,2.2rem);align-items:center}
+.nav-links a{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem 0;border-bottom:2px solid transparent}
+.nav-links a:hover{border-color:var(--red)}
+.cart-btn{background:var(--ink);color:var(--paper);border:none;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;padding:.55rem .95rem;display:flex;gap:.5rem;align-items:center}
+.cart-btn:hover{background:var(--red)}
+.cart-btn em{font-style:normal;background:var(--red);color:#fff;min-width:1.35rem;height:1.35rem;display:grid;place-items:center;border-radius:50%;font-size:.68rem;transition:transform .2s}
+.cart-btn:hover em{background:var(--ink)}
+.burger{display:none;background:none;border:2px solid var(--ink);padding:.4rem .6rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;border-bottom:2px solid var(--ink);min-height:72vh}
+.hero-copy{padding:clamp(2rem,5vw,4.5rem) clamp(1rem,4vw,2.5rem);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero-eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem}
+.hero-eyebrow::before{content:"";width:34px;height:2px;background:var(--red)}
+h1{font-family:var(--disp);font-size:clamp(3rem,8.5vw,7.2rem);line-height:.92;text-transform:uppercase;letter-spacing:-.01em}
+h1 .outline{color:transparent;-webkit-text-stroke:2.5px var(--ink)}
+h1 .red{color:var(--red)}
+.hero-sub{font-size:clamp(.95rem,1.4vw,1.1rem);max-width:44ch;margin:1.6rem 0 2.2rem;color:#3d3d3a}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding:.95rem 1.6rem;border:2px solid var(--ink);transition:all .18s}
+.btn-solid{background:var(--ink);color:var(--paper)}
+.btn-solid:hover{background:var(--red);border-color:var(--red)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.hero-stamp{position:absolute;bottom:1.2rem;right:1.4rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:#8a877f;text-transform:uppercase}
+.hero-visual{background:var(--coal);position:relative;display:flex;align-items:center;justify-content:center;border-left:2px solid var(--ink);overflow:hidden;padding:2rem}
+.hero-visual img.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;filter:grayscale(1) contrast(1.1)}
+.logo-tag{position:relative;background:#101010;border:1px solid #333;padding:1.4rem;max-width:380px;box-shadow:12px 12px 0 rgba(224,58,47,.85)}
+.logo-tag img{width:100%}
+.logo-tag .tag-meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;color:#9a978f;text-transform:uppercase;margin-top:1rem;border-top:1px solid #333;padding-top:.8rem}
+.tag-hole{position:absolute;top:.65rem;left:50%;transform:translateX(-50%);width:14px;height:14px;border:2px solid #444;border-radius:50%;background:var(--coal)}
+
+/* ---------- section scaffolding ---------- */
+section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.sec-head h2{font-family:var(--disp);font-size:clamp(1.7rem,3.6vw,2.8rem);text-transform:uppercase;line-height:1}
+.sec-head .kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:.5rem}
+.sec-head p{font-family:var(--mono);font-size:.75rem;color:#6c6961;max-width:36ch;text-align:right}
+
+/* ---------- brand index (signature) ---------- */
+.labels{background:var(--paper);border-bottom:2px solid var(--ink);padding-top:clamp(3rem,7vw,5.5rem)}
+.index-wrap{display:grid;grid-template-columns:1fr 340px;gap:2.5rem;align-items:start}
+.index{border-top:2px solid var(--ink)}
+.index-row{display:grid;grid-template-columns:3.2rem 1fr auto;align-items:center;gap:1rem;border-bottom:1px solid var(--line);padding:.7rem 0;width:100%;background:none;border-left:none;border-right:none;border-top:none;text-align:left;transition:background .15s,padding-left .15s}
+.index-row:hover,.index-row:focus-visible{background:#fff;padding-left:.7rem}
+.index-row .code{font-family:var(--mono);font-size:.68rem;color:#8a877f;letter-spacing:.1em}
+.index-row .bname{font-family:var(--disp);font-size:clamp(1.35rem,3.4vw,2.5rem);text-transform:uppercase;line-height:1.05;transition:color .15s}
+.index-row:hover .bname{color:var(--red)}
+.index-row .bmeta{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:#6c6961;text-transform:uppercase;text-align:right;line-height:1.7}
+.index-preview{position:sticky;top:90px;border:2px solid var(--ink);background:var(--coal);aspect-ratio:3/4;overflow:hidden;box-shadow:10px 10px 0 var(--paper-dim)}
+.index-preview img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4);transition:opacity .25s}
+.index-preview .cap{position:absolute;bottom:0;left:0;right:0;background:rgba(20,20,20,.88);color:var(--paper);font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;padding:.6rem .8rem;display:flex;justify-content:space-between}
+.index-preview .cap b{color:var(--red)}
+
+/* ---------- shop ---------- */
+.shop{background:var(--paper-dim);border-bottom:2px solid var(--ink)}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem .9rem;border:1.5px solid var(--ink);background:transparent;transition:all .15s}
+.chip:hover{background:#fff}
+.chip.on{background:var(--ink);color:var(--paper)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem}
+.card{background:#fff;border:1.5px solid var(--ink);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;position:relative}
+.card:hover{transform:translateY(-4px);box-shadow:7px 7px 0 var(--ink)}
+.card .ph{aspect-ratio:4/5;overflow:hidden;border-bottom:1.5px solid var(--ink);position:relative}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.card:hover .ph img{transform:scale(1.045)}
+.card .brand-tab{position:absolute;top:.7rem;left:0;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;padding:.35rem .7rem .35rem .6rem}
+.card .brand-tab::after{content:"";position:absolute;right:-8px;top:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:8px solid var(--ink)}
+.card-body{padding:.95rem 1rem 1.1rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
+.card-body h3{font-family:var(--body);font-weight:700;font-size:.95rem;line-height:1.3}
+.card-row{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.price{font-family:var(--mono);font-weight:600;font-size:.95rem}
+.sizes{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:#8a877f}
+.add{width:100%;border:1.5px solid var(--ink);background:transparent;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:.6rem;margin-top:.7rem;transition:all .15s}
+.add:hover{background:var(--red);border-color:var(--red);color:#fff}
+.add.added{background:var(--ink);color:var(--paper)}
+
+/* ---------- lookbook ---------- */
+.look{border-bottom:2px solid var(--ink);padding-right:0;padding-left:0}
+.look .sec-head{padding:0 clamp(1rem,4vw,2.5rem)}
+.look-strip{display:flex;gap:1rem;overflow-x:auto;padding:0 clamp(1rem,4vw,2.5rem) 1.2rem;scroll-snap-type:x mandatory}
+.look-strip figure{flex:0 0 clamp(230px,26vw,330px);scroll-snap-align:start;position:relative}
+.look-strip img{aspect-ratio:3/4;object-fit:cover;width:100%;border:2px solid var(--ink);filter:grayscale(.5);transition:filter .25s}
+.look-strip figure:hover img{filter:grayscale(0)}
+.look-strip figcaption{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;margin-top:.5rem;color:#6c6961}
+.look-strip::-webkit-scrollbar{height:8px}
+.look-strip::-webkit-scrollbar-thumb{background:var(--ink)}
+.look-strip::-webkit-scrollbar-track{background:var(--line)}
+
+/* ---------- about / signup ---------- */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:3rem;border-bottom:2px solid var(--ink);background:var(--coal);color:var(--paper)}
+.about h2{font-family:var(--disp);font-size:clamp(1.7rem,3.4vw,2.6rem);text-transform:uppercase;line-height:1.05;margin-bottom:1.2rem}
+.about h2 span{color:var(--red)}
+.about p{color:#b9b6ae;max-width:52ch;margin-bottom:1rem}
+.about .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#333;border:1px solid #333;margin-top:1.8rem}
+.about .facts div{background:var(--coal);padding:1rem}
+.about .facts b{font-family:var(--disp);font-size:1.5rem;display:block}
+.about .facts span{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#8a877f}
+.signup{display:flex;flex-direction:column;justify-content:center}
+.signup label{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.9rem}
+.signup-row{display:flex;border:2px solid var(--paper)}
+.signup input{flex:1;background:transparent;border:none;color:var(--paper);font-family:var(--mono);font-size:.85rem;padding:.95rem 1rem;min-width:0}
+.signup input::placeholder{color:#777}
+.signup input:focus{outline:none;background:rgba(255,255,255,.06)}
+.signup button{background:var(--red);color:#fff;border:none;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;padding:0 1.6rem}
+.signup button:hover{background:var(--paper);color:var(--ink)}
+.signup .note{font-family:var(--mono);font-size:.68rem;color:#8a877f;margin-top:.8rem}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2rem}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.foot-grid img{max-width:220px;border:1px solid #333}
+.foot-grid h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);margin-bottom:1rem}
+.foot-grid ul{list-style:none}
+.foot-grid li{margin-bottom:.55rem;font-size:.85rem}
+.foot-grid a:hover{color:var(--red)}
+.legal{border-top:1px solid #333;padding-top:1.4rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;line-height:1.9;color:#77746c}
+
+/* ---------- cart drawer ---------- */
+.drawer-veil{position:fixed;inset:0;background:rgba(20,20,20,.55);z-index:98;opacity:0;pointer-events:none;transition:opacity .25s}
+.drawer-veil.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,92vw);background:var(--paper);z-index:99;transform:translateX(105%);transition:transform .28s;border-left:2px solid var(--ink);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.3rem;border-bottom:2px solid var(--ink)}
+.drawer-head b{font-family:var(--disp);text-transform:uppercase;font-size:1rem}
+.drawer-close{background:none;border:2px solid var(--ink);font-family:var(--mono);font-size:.7rem;padding:.35rem .7rem}
+.drawer-close:hover{background:var(--red);border-color:var(--red);color:#fff}
+.drawer-items{flex:1;overflow-y:auto;padding:1rem 1.3rem}
+.d-item{display:grid;grid-template-columns:64px 1fr auto;gap:.9rem;align-items:center;border-bottom:1px solid var(--line);padding:.8rem 0}
+.d-item img{width:64px;height:76px;object-fit:cover;border:1.5px solid var(--ink)}
+.d-item .n{font-weight:700;font-size:.85rem}
+.d-item .b{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#8a877f}
+.d-item .p{font-family:var(--mono);font-size:.8rem;margin-top:.2rem}
+.d-rm{background:none;border:none;font-family:var(--mono);font-size:.65rem;color:#8a877f;text-decoration:underline}
+.d-rm:hover{color:var(--red)}
+.drawer-empty{font-family:var(--mono);font-size:.75rem;color:#8a877f;text-align:center;padding:3rem 1rem;line-height:2}
+.drawer-foot{border-top:2px solid var(--ink);padding:1.1rem 1.3rem}
+.d-total{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.85rem;font-weight:600;margin-bottom:.9rem}
+.checkout{width:100%;background:var(--ink);color:var(--paper);border:none;font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:.95rem}
+.checkout:hover{background:var(--red)}
+.d-note{font-family:var(--mono);font-size:.6rem;color:#8a877f;text-align:center;margin-top:.6rem}
+
+/* toast */
+.toast{position:fixed;bottom:1.4rem;left:50%;transform:translate(-50%,calc(100% + 2.5rem));visibility:hidden;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;padding:.75rem 1.3rem;z-index:120;transition:transform .3s,visibility .3s;border-left:4px solid var(--red)}
+.toast.show{transform:translate(-50%,0);visibility:visible}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-visual{border-left:none;border-top:2px solid var(--ink);min-height:380px}
+  .index-wrap{grid-template-columns:1fr}
+  .index-preview{display:none}
+  .about{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:2rem}
+  .nav-links{position:fixed;top:0;right:0;bottom:0;width:min(300px,80vw);background:var(--paper);flex-direction:column;align-items:flex-start;padding:4.5rem 2rem;gap:1.6rem;border-left:2px solid var(--ink);transform:translateX(105%);transition:transform .25s;z-index:90}
+  .nav-links.open{transform:none}
+  .burger{display:block;z-index:95}
+  .index-row .bmeta{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- nav -->
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="mark" href="#top" aria-label="MGN Threads Collective home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 25 16 5l13 20h-6.4L16 15l-6.6 10z" fill="#E03A2F"/></svg>
+      <span><b>MGN</b><small>THREADS COLLECTIVE</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#labels">The Labels</a>
+      <a href="#shop">The Rack</a>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#about">About</a>
+    </div>
+    <div style="display:flex;gap:.7rem;align-items:center">
+      <button class="cart-btn" id="cartOpen" aria-label="Open cart">CART <em id="cartCount">0</em></button>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">MENU</button>
+    </div>
+  </nav>
+</header>
+
+<!-- hero -->
+<section class="hero" id="top" style="padding:0">
+  <div class="hero-copy">
+    <p class="hero-eyebrow">Curated multi-brand tee shop</p>
+    <h1>Nine<br><span class="outline">labels.</span><br>One <span class="red">rack.</span></h1>
+    <p class="hero-sub">From Detroit workwear to Tokyo streetwear — we pull the tees worth owning from nine labels and hang them on one rack, so you don't have to dig.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#shop">Browse the rack</a>
+      <a class="btn btn-ghost" href="#labels">See the labels</a>
+    </div>
+    <span class="hero-stamp">MGN·TC — EST. COLLECTION 001</span>
+  </div>
+  <div class="hero-visual">
+    <img class="hero-photo" src="assets/img/tee-1.jpg" alt="" aria-hidden="true">
+    <div class="logo-tag">
+      <span class="tag-hole" aria-hidden="true"></span>
+      <img src="assets/mgn-logo.png" alt="MGN Threads Collective logo">
+      <div class="tag-meta"><span>Authentic goods</span><span>Tag № 001</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- brand index -->
+<section class="labels" id="labels">
+  <div class="sec-head">
+    <div><span class="kicker">The Labels</span><h2>The index</h2></div>
+    <p>Nine names on the rack. Tap one to see what's in stock.</p>
+  </div>
+  <div class="index-wrap">
+    <div class="index" id="brandIndex" role="list"></div>
+    <div class="index-preview" id="indexPreview" aria-hidden="true">
+      <img id="previewImg" src="assets/img/graphic-1.jpg" alt="">
+      <div class="cap"><b id="previewName">Stüssy</b><span id="previewMeta">Laguna Beach — 1980</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- shop -->
+<section class="shop" id="shop">
+  <div class="sec-head">
+    <div><span class="kicker">The Rack</span><h2>In stock now</h2></div>
+    <p>Every tee tagged by label. Filter the rack, add to cart.</p>
+  </div>
+  <div class="filters" id="filters" role="group" aria-label="Filter by brand"></div>
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<!-- lookbook -->
+<section class="look" id="lookbook">
+  <div class="sec-head">
+    <div><span class="kicker">Lookbook</span><h2>Worn, not displayed</h2></div>
+    <p>How the rack looks off the hanger.</p>
+  </div>
+  <div class="look-strip" id="lookStrip"></div>
+</section>
+
+<!-- about + signup -->
+<section class="about" id="about">
+  <div>
+    <h2>We dig the racks <span>so you don't have to.</span></h2>
+    <p>MGN Threads Collective is a small crew of collectors who got tired of scrolling five stores to build one fit. We stock a tight rotation of tees from nine labels we actually wear — heavyweight workwear basics, Japanese street icons, and everyday staples that hold up.</p>
+    <p>Every piece is checked, tagged, and photographed by us before it goes on the rack.</p>
+    <div class="facts">
+      <div><b>9</b><span>Labels stocked</span></div>
+      <div><b>18</b><span>Styles this drop</span></div>
+      <div><b>1</b><span>Rack to browse</span></div>
+    </div>
+  </div>
+  <div class="signup">
+    <label for="dropEmail">Drop alerts</label>
+    <form class="signup-row" id="dropForm">
+      <input type="email" id="dropEmail" placeholder="your@email.com" required aria-label="Email for drop alerts">
+      <button type="submit">Notify me</button>
+    </form>
+    <p class="note">One email per drop. No spam, no daily blasts.</p>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <img src="assets/mgn-logo.png" alt="MGN Threads Collective logo">
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#labels">The Labels</a></li>
+        <li><a href="#shop">The Rack</a></li>
+        <li><a href="#lookbook">Lookbook</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Labels on the rack</h4>
+      <ul id="footBrands"></ul>
+    </div>
+  </div>
+  <p class="legal">
+    © <span id="year"></span> MGN Threads Collective. Demo storefront — checkout is not live.<br>
+    Carhartt, Essentials (Fear of God), The North Face, Stüssy, A Bathing Ape, Human Made, H&amp;M, Cotton On and Uniqlo are trademarks of their respective owners; MGN Threads Collective is an independent retailer and is not affiliated with or endorsed by these brands.<br>
+    Photography via Pexels — Joshua Roberts, Jansel Ferma, Ralph Rabago, Lucas Toyes, Madvortex, Marlon Alves, Wayne Fotografias, LEONARDO DOURADO, Ultra, Matheus Bertelli, Boko Shots, Daniel Adesina, Amir Abbaspoor, Mustapha Damilola, Wolrider Yurtseven, Duygu Kamar, F1 Digitals, Juan C. Palacios, Displaced by Design Clothing.
+  </p>
+</footer>
+
+<!-- cart drawer -->
+<div class="drawer-veil" id="veil"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="drawer-head"><b>Your cart</b><button class="drawer-close" id="cartClose">Close ✕</button></div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="d-total"><span>Subtotal</span><span id="cartTotal">₱0</span></div>
+    <button class="checkout" id="checkoutBtn">Checkout</button>
+    <p class="d-note">Demo store — checkout is not connected yet.</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const BRANDS=[
+  {id:"carhartt",name:"Carhartt",origin:"Detroit, USA",year:"1889",img:"assets/img/hood-1.jpg"},
+  {id:"essentials",name:"Essentials",origin:"Los Angeles, USA",year:"2018",img:"assets/img/hood-2.jpg"},
+  {id:"tnf",name:"The North Face",origin:"San Francisco, USA",year:"1966",img:"assets/img/hood-3.jpg"},
+  {id:"stussy",name:"Stüssy",origin:"Laguna Beach, USA",year:"1980",img:"assets/img/graphic-1.jpg"},
+  {id:"bape",name:"A Bathing Ape",origin:"Tokyo, Japan",year:"1993",img:"assets/img/graphic-2.jpg"},
+  {id:"humanmade",name:"Human Made",origin:"Tokyo, Japan",year:"2010",img:"assets/img/graphic-4.jpg"},
+  {id:"hm",name:"H&M",origin:"Västerås, Sweden",year:"1947",img:"assets/img/shirt-1.jpg"},
+  {id:"cottonon",name:"Cotton On",origin:"Geelong, Australia",year:"1991",img:"assets/img/shirt-2.jpg"},
+  {id:"uniqlo",name:"Uniqlo",origin:"Yamaguchi, Japan",year:"1984",img:"assets/img/shirt-3.jpg"},
+];
+const PRODUCTS=[
+  {id:1,brand:"carhartt",name:"Heavyweight Pocket Tee — Carbon",price:2450,img:"assets/img/hood-1.jpg"},
+  {id:2,brand:"carhartt",name:"Workwear Logo Tee — Duck Brown",price:2250,img:"assets/img/shirt-4.jpg"},
+  {id:3,brand:"essentials",name:"Core Logo Tee — Bone",price:4500,img:"assets/img/hood-2.jpg"},
+  {id:4,brand:"essentials",name:"Boxy Fit Tee — Iron",price:4800,img:"assets/img/tee-5.jpg"},
+  {id:5,brand:"tnf",name:"Half Dome Tee — Black",price:1950,img:"assets/img/hood-3.jpg"},
+  {id:6,brand:"tnf",name:"Box Logo Tee — Summit White",price:2100,img:"assets/img/hood-6.jpg"},
+  {id:7,brand:"stussy",name:"Stock Logo Tee — White",price:3200,img:"assets/img/graphic-1.jpg"},
+  {id:8,brand:"stussy",name:"8-Ball Graphic Tee — Black",price:3500,img:"assets/img/tee-2.jpg"},
+  {id:9,brand:"bape",name:"Ape Head Tee — Black",price:6800,img:"assets/img/graphic-2.jpg"},
+  {id:10,brand:"bape",name:"College Logo Tee — Grey",price:6500,img:"assets/img/hood-4.jpg"},
+  {id:11,brand:"humanmade",name:"Heart Logo Tee — White",price:5900,img:"assets/img/graphic-4.jpg"},
+  {id:12,brand:"humanmade",name:"Dry Alls Graphic Tee — Navy",price:5700,img:"assets/img/shirt-5.jpg"},
+  {id:13,brand:"hm",name:"Relaxed Fit Cotton Tee — White",price:899,img:"assets/img/shirt-1.jpg"},
+  {id:14,brand:"hm",name:"Oversized Tee — Washed Black",price:999,img:"assets/img/tee-1.jpg"},
+  {id:15,brand:"cottonon",name:"Loose Fit Tee — Vintage Wash",price:999,img:"assets/img/shirt-2.jpg"},
+  {id:16,brand:"cottonon",name:"Graphic Print Tee — Stone",price:1150,img:"assets/img/graphic-5.jpg"},
+  {id:17,brand:"uniqlo",name:"Airism Cotton Crew Tee — White",price:790,img:"assets/img/shirt-3.jpg"},
+  {id:18,brand:"uniqlo",name:"U Crew Neck Tee — Olive",price:990,img:"assets/img/tee-6.jpg"},
+];
+const LOOKS=[
+  {img:"assets/img/graphic-3.jpg",cap:"Look 01 — Street"},
+  {img:"assets/img/hood-5.jpg",cap:"Look 02 — Layered"},
+  {img:"assets/img/shirt-6.jpg",cap:"Look 03 — Everyday"},
+  {img:"assets/img/graphic-6.jpg",cap:"Look 04 — Graphic"},
+  {img:"assets/img/tee-2.jpg",cap:"Look 05 — Classic"},
+  {img:"assets/img/hood-4.jpg",cap:"Look 06 — Night"},
+];
+const peso=n=>"₱"+n.toLocaleString("en-PH");
+const bname=id=>BRANDS.find(b=>b.id===id)?.name||id;
+
+/* ticker */
+(function(){
+  const seq=BRANDS.map(b=>`<span>${b.name} <i class="tri">▲</i></span>`).join("");
+  document.getElementById("tickerTrack").innerHTML=seq+seq;
+})();
+
+/* brand index */
+(function(){
+  const wrap=document.getElementById("brandIndex");
+  BRANDS.forEach((b,i)=>{
+    const count=PRODUCTS.filter(p=>p.brand===b.id).length;
+    const row=document.createElement("button");
+    row.className="index-row";row.setAttribute("role","listitem");
+    row.innerHTML=`<span class="code">${String(i+1).padStart(2,"0")}/09</span><span class="bname">${b.name}</span><span class="bmeta">${b.origin} — Est. ${b.year}<br>${count} styles in stock</span>`;
+    row.addEventListener("mouseenter",()=>preview(b));
+    row.addEventListener("focus",()=>preview(b));
+    row.addEventListener("click",()=>{setFilter(b.id);document.getElementById("shop").scrollIntoView({behavior:"smooth"});});
+    wrap.appendChild(row);
+  });
+  function preview(b){
+    document.getElementById("previewImg").src=b.img;
+    document.getElementById("previewName").textContent=b.name;
+    document.getElementById("previewMeta").textContent=`${b.origin} — ${b.year}`;
+  }
+})();
+
+/* footer brand list */
+document.getElementById("footBrands").innerHTML=BRANDS.map(b=>`<li><a href="#shop" onclick="setFilter('${b.id}')">${b.name}</a></li>`).join("");
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* shop + filters */
+let activeFilter="all";
+function setFilter(f){
+  activeFilter=f;
+  document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c.dataset.f===f));
+  renderGrid();
+}
+(function(){
+  const fl=document.getElementById("filters");
+  const chips=[{id:"all",name:"All labels"}].concat(BRANDS);
+  fl.innerHTML=chips.map(c=>`<button class="chip${c.id==="all"?" on":""}" data-f="${c.id}">${c.name}</button>`).join("");
+  fl.addEventListener("click",e=>{const b=e.target.closest(".chip");if(b)setFilter(b.dataset.f);});
+})();
+function renderGrid(){
+  const grid=document.getElementById("productGrid");
+  const items=PRODUCTS.filter(p=>activeFilter==="all"||p.brand===activeFilter);
+  grid.innerHTML=items.map(p=>`
+    <article class="card">
+      <div class="ph"><span class="brand-tab">${bname(p.brand)}</span><img src="${p.img}" alt="${bname(p.brand)} — ${p.name}" loading="lazy"></div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <div class="card-row"><span class="price">${peso(p.price)}</span><span class="sizes">S · M · L · XL</span></div>
+        <button class="add" data-id="${p.id}">Add to cart</button>
+      </div>
+    </article>`).join("");
+}
+renderGrid();
+document.getElementById("productGrid").addEventListener("click",e=>{
+  const btn=e.target.closest(".add");if(!btn)return;
+  addToCart(+btn.dataset.id);
+  btn.textContent="Added ✓";btn.classList.add("added");
+  setTimeout(()=>{btn.textContent="Add to cart";btn.classList.remove("added");},1400);
+});
+
+/* lookbook */
+document.getElementById("lookStrip").innerHTML=LOOKS.map(l=>`<figure><img src="${l.img}" alt="${l.cap}" loading="lazy"><figcaption>${l.cap}</figcaption></figure>`).join("");
+
+/* cart */
+let cart=[];
+try{cart=JSON.parse(localStorage.getItem("mgn-cart")||"[]")}catch(e){cart=[]}
+function saveCart(){localStorage.setItem("mgn-cart",JSON.stringify(cart));renderCart();}
+function addToCart(id){cart.push(id);saveCart();toast("Added to cart — "+PRODUCTS.find(p=>p.id===id).name);}
+function renderCart(){
+  document.getElementById("cartCount").textContent=cart.length;
+  const box=document.getElementById("drawerItems");
+  if(!cart.length){box.innerHTML=`<p class="drawer-empty">The rack is full,<br>your cart is empty.<br><br>Go pick something.</p>`;}
+  else{
+    box.innerHTML=cart.map((id,idx)=>{const p=PRODUCTS.find(x=>x.id===id);return `
+      <div class="d-item">
+        <img src="${p.img}" alt="">
+        <div><div class="b">${bname(p.brand)}</div><div class="n">${p.name}</div><div class="p">${peso(p.price)}</div></div>
+        <button class="d-rm" data-idx="${idx}">Remove</button>
+      </div>`;}).join("");
+  }
+  document.getElementById("cartTotal").textContent=peso(cart.reduce((s,id)=>s+PRODUCTS.find(p=>p.id===id).price,0));
+}
+document.getElementById("drawerItems").addEventListener("click",e=>{
+  const b=e.target.closest(".d-rm");if(!b)return;
+  cart.splice(+b.dataset.idx,1);saveCart();
+});
+const drawer=document.getElementById("drawer"),veil=document.getElementById("veil");
+function openCart(){drawer.classList.add("open");veil.classList.add("open");drawer.setAttribute("aria-hidden","false");}
+function closeCart(){drawer.classList.remove("open");veil.classList.remove("open");drawer.setAttribute("aria-hidden","true");}
+document.getElementById("cartOpen").addEventListener("click",openCart);
+document.getElementById("cartClose").addEventListener("click",closeCart);
+veil.addEventListener("click",closeCart);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart();});
+document.getElementById("checkoutBtn").addEventListener("click",()=>toast("Demo store — checkout coming soon."));
+renderCart();
+
+/* signup */
+document.getElementById("dropForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  toast("You're on the list. See you at the next drop.");
+  e.target.reset();
+});
+
+/* burger */
+const burger=document.getElementById("burger"),navLinks=document.getElementById("navLinks");
+burger.addEventListener("click",()=>{
+  const open=navLinks.classList.toggle("open");
+  burger.setAttribute("aria-expanded",open);
+  burger.textContent=open?"CLOSE":"MENU";
+});
+navLinks.addEventListener("click",e=>{if(e.target.tagName==="A"){navLinks.classList.remove("open");burger.textContent="MENU";burger.setAttribute("aria-expanded","false");}});
+
+/* toast */
+let toastTimer;
+function toast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg;t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove("show"),2600);
+}
+</script>
+</body>
+</html>
