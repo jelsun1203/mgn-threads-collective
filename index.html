@@ -290,7 +290,7 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
   <div class="index-wrap">
     <div class="index" id="brandIndex" role="list"></div>
     <div class="index-preview" id="indexPreview" aria-hidden="true">
-      <img id="previewImg" src="assets/img/wm-carhartt-tab.jpg" alt="">
+      <img id="previewImg" src="assets/img/mgn-carhartt-green.jpg" alt="">
       <div class="preview-tile" id="previewTile" hidden><span class="tile-word"></span></div>
       <div class="cap"><b id="previewName">Carhartt</b><span id="previewMeta">Detroit, USA — 1889</span></div>
     </div>
@@ -390,9 +390,9 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
 
 <script>
 const BRANDS=[
-  {id:"carhartt",name:"Carhartt",origin:"Detroit, USA",year:"1889",img:"assets/img/wm-carhartt-tab.jpg",logo:"assets/logos/carhartt.svg"},
+  {id:"carhartt",name:"Carhartt",origin:"Detroit, USA",year:"1889",img:"assets/img/mgn-carhartt-green.jpg",logo:"assets/logos/carhartt.svg"},
   {id:"essentials",name:"Essentials",origin:"Los Angeles, USA",year:"2018",img:"assets/img/px-14888315.jpg",logo:"assets/logos/essentials.png"},
-  {id:"tnf",name:"The North Face",origin:"San Francisco, USA",year:"1966",img:"assets/tees/tnf.svg",logo:"assets/logos/tnf.svg"},
+  {id:"tnf",name:"The North Face",origin:"San Francisco, USA",year:"1966",img:"assets/img/mgn-tnf-mauve.jpg",logo:"assets/logos/tnf.svg"},
   {id:"stussy",name:"Stüssy",origin:"Laguna Beach, USA",year:"1980",img:"assets/img/wm-stussy-store.jpg",logo:"assets/logos/stussy.svg"},
   {id:"bape",name:"A Bathing Ape",origin:"Tokyo, Japan",year:"1993",img:"assets/img/px-11056192.jpg",logo:"assets/logos/bape.png"},
   {id:"humanmade",name:"Human Made",origin:"Tokyo, Japan",year:"2010",img:"assets/tees/humanmade.svg",logo:"assets/logos/humanmade.png"},
@@ -401,16 +401,16 @@ const BRANDS=[
   {id:"uniqlo",name:"Uniqlo",origin:"Yamaguchi, Japan",year:"1984",img:"assets/tees/uniqlo.svg",logo:"assets/logos/uniqlo.svg"},
 ];
 const PRODUCTS=[
-  {id:1,brand:"carhartt",name:"Heavyweight Pocket Tee — Natural",price:2450,img:"assets/tees/carhartt.svg"},
-  {id:2,brand:"carhartt",name:"Rugged Flex Pocket Tee — Duck",price:2250,img:"assets/img/wm-carhartt-tab.jpg"},
-  {id:3,brand:"essentials",name:"Fear of God Raglan Hoodie — Bone",price:8900,img:"assets/img/px-14888315.jpg"},
-  {id:4,brand:"essentials",name:"Back Logo Tee — Cement",price:8500,img:"assets/img/px-14999470-crop.jpg"},
-  {id:5,brand:"tnf",name:"Simple Dome Tee — White",price:1950,img:"assets/tees/tnf.svg"},
-  {id:6,brand:"tnf",name:"Half Dome Tee — Bone",price:2100,img:"assets/tees/tnf.svg"},
+  {id:1,brand:"carhartt",name:"Heavyweight Pocket Tee — Tan",price:2450,img:"assets/img/mgn-carhartt-tan.jpg"},
+  {id:2,brand:"carhartt",name:"Rugged Flex Pocket Tee — Black",price:2250,img:"assets/img/mgn-carhartt-black.jpg"},
+  {id:3,brand:"essentials",name:"Core Logo Tee — Khaki",price:4500,img:"assets/img/mgn-ess-khaki.jpg"},
+  {id:4,brand:"essentials",name:"Boxy Fit Tee — Black",price:4800,img:"assets/img/mgn-ess-black.jpg"},
+  {id:5,brand:"tnf",name:"Simple Dome Tee — Pine",price:1950,img:"assets/img/mgn-tnf-pine.jpg"},
+  {id:6,brand:"tnf",name:"Box Logo Tee — Olive",price:2100,img:"assets/img/mgn-tnf-olive.jpg"},
   {id:7,brand:"stussy",name:"Stock Logo Tee — White",price:3200,img:"assets/tees/stussy.svg"},
   {id:8,brand:"stussy",name:"8-Ball Graphic Tee — Bone",price:3500,img:"assets/tees/stussy.svg"},
-  {id:9,brand:"bape",name:"WGM Shark Tee — Black Camo",price:18500,img:"assets/img/px-5880081.jpg"},
-  {id:10,brand:"bape",name:"Tiger Camo Tee — Green",price:16800,img:"assets/img/px-11056192-crop.jpg"},
+  {id:9,brand:"bape",name:"Shark Face Tee — Black",price:18500,img:"assets/img/mgn-bape-shark.jpg"},
+  {id:10,brand:"bape",name:"WGM College Tee — Black",price:16800,img:"assets/img/mgn-bape-wgm.jpg"},
   {id:11,brand:"humanmade",name:"Heart Logo Tee — White",price:5900,img:"assets/tees/humanmade.svg"},
   {id:12,brand:"humanmade",name:"Dry Alls Graphic Tee — Sand",price:5700,img:"assets/tees/humanmade.svg"},
   {id:13,brand:"hm",name:"Regular Fit Crew Tee — Ecru",price:899,img:"assets/tees/hm.svg"},
@@ -421,14 +421,18 @@ const PRODUCTS=[
   {id:18,brand:"uniqlo",name:"U Crew Neck Tee — Olive",price:990,img:"assets/tees/uniqlo.svg"},
 ];
 const LOOKS=[
-  {img:"assets/img/px-14888315.jpg",cap:"Look 01 — Essentials"},
-  {img:"assets/img/px-11056192.jpg",cap:"Look 02 — A Bathing Ape"},
-  {img:"assets/img/px-13932579.jpg",cap:"Look 03 — H&M"},
-  {img:"assets/img/px-14999470.jpg",cap:"Look 04 — Essentials, LA"},
-  {img:"assets/img/px-5880084.jpg",cap:"Look 05 — A Bathing Ape, night"},
-  {img:"assets/img/px-14999470-crop.jpg",cap:"Look 06 — Essentials, back"},
-  {img:"assets/img/px-5880081.jpg",cap:"Look 07 — A Bathing Ape, street"},
-  {img:"assets/img/px-11056192-crop.jpg",cap:"Look 08 — A Bathing Ape, detail"},
+  {img:"assets/img/mgn-carhartt-tan.jpg",cap:"Look 01 — Carhartt"},
+  {img:"assets/img/px-14888315.jpg",cap:"Look 02 — Essentials"},
+  {img:"assets/img/mgn-tnf-brown.jpg",cap:"Look 03 — The North Face"},
+  {img:"assets/img/px-11056192.jpg",cap:"Look 04 — A Bathing Ape"},
+  {img:"assets/img/mgn-carhartt-white-back.jpg",cap:"Look 05 — Carhartt, back"},
+  {img:"assets/img/px-13932579.jpg",cap:"Look 06 — H&M"},
+  {img:"assets/img/mgn-tnf-graphic-back.jpg",cap:"Look 07 — The North Face, back"},
+  {img:"assets/img/px-14999470.jpg",cap:"Look 08 — Essentials, LA"},
+  {img:"assets/img/mgn-bape-kaws.jpg",cap:"Look 09 — A Bathing Ape × KAWS"},
+  {img:"assets/img/mgn-carhartt-script.jpg",cap:"Look 10 — Carhartt"},
+  {img:"assets/img/px-5880084.jpg",cap:"Look 11 — A Bathing Ape, night"},
+  {img:"assets/img/mgn-rack.jpg",cap:"Look 12 — The rack itself"},
 ];
 const peso=n=>"₱"+n.toLocaleString("en-PH");
 const bname=id=>BRANDS.find(b=>b.id===id)?.name||id;
@@ -436,10 +440,12 @@ const bname=id=>BRANDS.find(b=>b.id===id)?.name||id;
 /* hero slideshow */
 (function(){
   const SLIDES=[
+    {img:"assets/img/mgn-carhartt-tan.jpg",brand:"Carhartt"},
     {img:"assets/img/px-14999470.jpg",brand:"Essentials"},
+    {img:"assets/img/mgn-tnf-mauve.jpg",brand:"The North Face"},
     {img:"assets/img/px-5880081.jpg",brand:"A Bathing Ape"},
-    {img:"assets/img/px-14888315.jpg",brand:"Essentials"},
-    {img:"assets/img/px-11056192-crop.jpg",brand:"A Bathing Ape"},
+    {img:"assets/img/mgn-tnf-pine.jpg",brand:"The North Face"},
+    {img:"assets/img/mgn-carhartt-black.jpg",brand:"Carhartt"},
   ];
   const wrap=document.getElementById("heroVisual"),cap=document.getElementById("heroBrandCap");
   const imgs=SLIDES.map((s,i)=>{
