@@ -147,7 +147,11 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
 .look-strip::-webkit-scrollbar-track{background:var(--line)}
 
 /* ---------- about / signup ---------- */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:3rem;border-bottom:2px solid var(--ink);background:var(--coal);color:var(--paper)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:3rem;border-bottom:2px solid var(--ink);background:var(--coal);color:var(--paper);position:relative;overflow:hidden}
+.about>div:not(.brand-wall){position:relative;z-index:1}
+.about>.brand-wall{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.brand-wall img{position:absolute;opacity:.07;filter:grayscale(1) invert(1);width:auto}
+.brand-wall .wall-tri{position:absolute;left:-4%;bottom:-14%;width:34%;opacity:.06;transform:rotate(-8deg)}
 .about h2{font-family:var(--disp);font-size:clamp(1.7rem,3.4vw,2.6rem);text-transform:uppercase;line-height:1.05;margin-bottom:1.2rem}
 .about h2 span{color:var(--red)}
 .about p{color:#b9b6ae;max-width:52ch;margin-bottom:1rem}
@@ -318,6 +322,9 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
 
 <!-- about + signup -->
 <section class="about" id="about">
+  <div class="brand-wall" id="brandWall" aria-hidden="true">
+    <svg class="wall-tri" viewBox="0 0 32 32"><path d="M3 25 16 5l13 20h-6.4L16 15l-6.6 10z" fill="#E03A2F"/></svg>
+  </div>
   <div>
     <h2>We dig the racks <span>so you don't have to.</span></h2>
     <p>MGN Threads Collective is a small crew of collectors who got tired of scrolling five stores to build one fit. We stock a tight rotation of tees from nine labels we actually wear — heavyweight workwear basics, Japanese street icons, and everyday staples that hold up.</p>
@@ -492,6 +499,23 @@ const bname=id=>BRANDS.find(b=>b.id===id)?.name||id;
     document.getElementById("previewName").textContent=b.name;
     document.getElementById("previewMeta").textContent=`${b.origin} — ${b.year}`;
   }
+})();
+
+/* brand wall watermark (About section) */
+(function(){
+  const wall=document.getElementById("brandWall");
+  const spots=[
+    {l:"3%",t:"6%",h:64,r:-12},{l:"17%",t:"66%",h:96,r:8},{l:"33%",t:"82%",h:58,r:-6},
+    {l:"45%",t:"8%",h:52,r:14},{l:"58%",t:"72%",h:76,r:-10},{l:"73%",t:"5%",h:60,r:6},
+    {l:"88%",t:"58%",h:88,r:-14},{l:"36%",t:"38%",h:48,r:3},{l:"64%",t:"34%",h:50,r:-4},
+  ];
+  BRANDS.forEach((b,i)=>{
+    if(!b.logo||!spots[i])return;
+    const s=spots[i],im=document.createElement("img");
+    im.src=b.logo;im.alt="";
+    im.style.cssText=`left:${s.l};top:${s.t};height:${s.h}px;transform:rotate(${s.r}deg)`;
+    wall.appendChild(im);
+  });
 })();
 
 /* footer brand list */
