@@ -74,7 +74,7 @@ h1 .red{color:var(--red)}
 .hero-visual img.hero-photo.active{opacity:.55}
 .hero-brand-cap{position:absolute;left:1.2rem;bottom:1.1rem;z-index:2;background:rgba(16,16,16,.85);color:var(--paper);font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;padding:.5rem .9rem;border-left:3px solid var(--red)}
 .blogo{height:clamp(48px,6vw,72px);width:auto;max-width:320px;mix-blend-mode:multiply;display:block}
-.chip-logo{height:28px;width:auto;max-width:140px;mix-blend-mode:multiply;display:block}
+.chip-logo{height:auto;max-height:68px;width:auto;max-width:160px;mix-blend-mode:multiply;display:block}
 .chip{display:inline-flex;align-items:center;gap:.4rem}
 
 /* ---------- section scaffolding ---------- */
@@ -105,7 +105,7 @@ section{padding:clamp(3rem,7vw,5.5rem) clamp(1rem,4vw,2.5rem)}
 /* ---------- shop ---------- */
 .shop{background:var(--paper-dim);border-bottom:2px solid var(--ink)}
 .filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.2rem}
-.chip{flex:1 1 auto;justify-content:center;font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 1.2rem;border:1.5px solid var(--ink);background:transparent;transition:all .15s}
+.chip{flex:1 1 auto;justify-content:center;min-width:180px;min-height:100px;font-family:var(--mono);font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 1.2rem;border:1.5px solid var(--ink);background:transparent;transition:all .15s}
 .chip:hover{background:#fff}
 .chip.on{background:#fff;color:var(--ink);border-color:var(--red);box-shadow:3px 3px 0 var(--red)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem}
@@ -206,6 +206,8 @@ footer{background:var(--ink);color:#b9b6ae;padding:3rem clamp(1rem,4vw,2.5rem) 2
 
 /* ---------- responsive ---------- */
 @media(max-width:900px){
+  .chip{min-width:calc(50% - .6rem);min-height:76px}
+  .chip-logo{max-height:48px;max-width:130px}
   .hero{grid-template-columns:1fr;min-height:0}
   .hero-visual{border-left:none;border-top:2px solid var(--ink);min-height:380px}
   .index-wrap{grid-template-columns:1fr}
